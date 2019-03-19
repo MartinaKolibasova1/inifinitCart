@@ -1,0 +1,36 @@
+<app-header [mode]="'New pizza'">Add new pizza</app-header>
+
+<ion-content padding>
+  <form *ngIf="form" [formGroup]="form" padding (ngSubmit)="onAddPizza()">
+
+    <ion-item no-padding>
+      <ion-label>Názov</ion-label>
+      <ion-input formControlName="name" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item no-padding>
+      <ion-label>Cena</ion-label>
+      <ion-input formControlName="price" type="text"></ion-input>
+    </ion-item>
+
+    <h6 margin-top>Ingrediencie</h6>
+
+    <ul formArrayName="ingredients" no-padding no-margin>
+      <li *ngFor="let ingredients of form.get('ingredients').controls; let i = index" margin-bottom>
+        <input type="text" [formControlName]="i">
+      </li>
+    </ul>
+    <ion-button size="small" fill="outline" font-size--tiny (click)="onAddIngredient()">
+      <ion-icon name="add"></ion-icon> Pridať ingredienciu
+    </ion-button>
+
+    <ion-item margin-top no-padding>
+      <ion-label>Alergény</ion-label>
+      <ion-select formControlName="alergens" multiple="true" cancelText="Zatvoriť" okText="Pridať">
+        <ion-select-option *ngFor="let alergen of alergens" value="{{alergen.id}}">{{ alergen.id + " - " + alergen.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button type="submit" margin-top><ion-icon name="pizza"></ion-icon> {{ editMode ? 'Editovať pizzu' : 'Vytvoriť pizzu' }}</ion-button>
+  </form>
+</ion-content>

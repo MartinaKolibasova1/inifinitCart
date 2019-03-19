@@ -1,0 +1,7 @@
+{
+  "name": "mtaa",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

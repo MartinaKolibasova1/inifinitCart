@@ -1,0 +1,29 @@
+<app-header [mode]="'AllPizzas'"></app-header>
+<ion-content padding>
+  <div class="list">
+
+    <ion-card *ngFor="let item of itemsCollection">
+      <ion-card-header>
+        <ion-img src="/assets/intro.jpg" routerLink="/allpizzas/{{item.id}}"></ion-img>
+        <ion-card-title routerLink="/allpizzas/{{item.id}}">{{item.name}}</ion-card-title>
+        <ion-card-subtitle>
+          <span *ngFor="let ingredient of item.ingredients">{{ ingredient }},</span>
+        </ion-card-subtitle>
+        <div class="wrapper">
+          <strong> {{item.price | currency:'EUR':'symbol' }}</strong>
+          <ion-button float-right size="small" (click)="cartService.addProduct(item)"> <ion-icon name="cart"></ion-icon>Kúpiť</ion-button>
+        </div>
+      </ion-card-header>
+    </ion-card>
+    <div class="item" margin-bottom>
+      <div class="item-desc">
+
+      </div>
+    </div>
+  </div>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
+</ion-content>

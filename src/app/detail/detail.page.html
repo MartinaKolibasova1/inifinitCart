@@ -1,0 +1,20 @@
+<app-header [mode]="'Detail'"></app-header>
+
+<ion-content padding>
+<div class="wrapper">
+  <ion-img src="/assets/intro.jpg"></ion-img>
+  <h1>{{pizza.name}} <span float-right>{{ pizza.price | currency:'EUR':'symbol' }}</span> </h1>
+</div>
+  <h4>Ingredients:</h4>
+  <ul>
+    <li *ngFor="let ingredient of pizza.ingredients">{{ ingredient }}</li>
+  </ul>
+  <h4>Alergeny:</h4>
+  <ul>
+    <li *ngFor="let alergen of filteredAlergens">{{ alergen.id + ' ' + alergen.name }}</li>
+  </ul>
+
+  <ion-button routerLink="/allpizzas/{{ id }}/edit" color="warning">Upraviť</ion-button>
+  <ion-button (click)="onDeletePizza()" color="danger">Odstrániť</ion-button>
+  <ion-button float-right size="small" (click)="cartService.addProduct(item)"> <ion-icon name="cart"></ion-icon>Kúpiť</ion-button>
+</ion-content>

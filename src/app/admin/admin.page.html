@@ -1,0 +1,15 @@
+<app-header [mode]="'Admin'"></app-header>
+
+<ion-content padding>
+  <ion-list *ngIf="pizzas.length">
+    <ion-item *ngFor="let pizza of pizzas">
+      <ion-label routerLink="/allpizzas/{{ pizza.id }}">{{ pizza.name }}</ion-label>
+      <ion-button routerLink="/allpizzas/{{ pizza.id }}/edit"><ion-icon slot="icon-only" name="create"></ion-icon></ion-button>
+      <ion-button (click)="onDeletePizza(pizza.id)"><ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button routerLink="/allpizzas/new" size="small">
+    <ion-icon name="add"></ion-icon>
+    Add new pizza
+  </ion-button>
+</ion-content>

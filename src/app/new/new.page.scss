@@ -1,0 +1,13 @@
+input {
+    outline: none;
+}
+
+input:focus {
+    border-bottom: 1px solid black;
+}
+
+li input {
+    border: none;
+    border-bottom: 1px solid grey;
+    width: 100%;
+}

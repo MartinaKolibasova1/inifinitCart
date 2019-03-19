@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons *ngIf="mode == 'Home'" slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="auth.isLoggedIn" (click)="auth.logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="cartService.getCartLength()" (click)="goToCart()">
+        <ion-badge *ngIf="cartService.getCartLength()">{{ cartService.getCartLength() }}</ion-badge>
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+      <ion-back-button *ngIf="mode != 'Home'" defaultHref="/"></ion-back-button>
+      <ion-title>
+        {{ mode }}
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
